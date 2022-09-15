@@ -46,6 +46,7 @@ class _ColorPicker extends State<ColorPicker> {
   @override
   Widget build(BuildContext context) {
     Color color = Color.fromARGB(0xFF, int.parse('0x$redColor'), int.parse('0x$greenColor'), int.parse('0x$blueColor'));
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Color selector page'),
@@ -53,11 +54,11 @@ class _ColorPicker extends State<ColorPicker> {
       body: Row(
         children: <Widget>[
           Expanded(
-            flex: 2, // 20%
+            flex: 2,
             child: Container(),
           ),
           Expanded(
-            flex: 6, // 20%
+            flex: 6,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -77,19 +78,19 @@ class _ColorPicker extends State<ColorPicker> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text('Red'),
-                    dropDown(redColor, (value) => {
+                    colorDropDown(redColor, (value) => {
                       setState(() {
                         redColor = value!;
                       }),
                     }),
                     const Text('Green'),
-                    dropDown(greenColor, (value) => {
+                    colorDropDown(greenColor, (value) => {
                       setState(() {
                         greenColor = value!;
                       }),
                     }),
                     const Text('Blue'),
-                    dropDown(blueColor, (value) => {
+                    colorDropDown(blueColor, (value) => {
                       setState(() {
                         blueColor = value!;
                       }),
@@ -112,7 +113,7 @@ class _ColorPicker extends State<ColorPicker> {
             ),
           ),
           Expanded(
-            flex: 2, // 20%
+            flex: 2,
             child: Container(),
           ),
         ],
@@ -124,7 +125,7 @@ class _ColorPicker extends State<ColorPicker> {
     return color?.toRadixString(16).padLeft(2, '0').toUpperCase() ?? colorList.first;
   }
 
-  DropdownButton dropDown(String color, Function change){
+  DropdownButton colorDropDown(String color, Function change){
     return DropdownButton<String>(
       value: color,
       icon: const Icon(Icons.keyboard_arrow_down_rounded),

@@ -124,15 +124,4 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-
-  String getName(Character item) {
-    if(item.name == null || item.type == null){
-      return 'Here comes the name';
-    }
-
-    String formattedEnum = character.type.toString().split(".")[1];
-    formattedEnum = '${formattedEnum[0].toUpperCase()}${formattedEnum.substring(1)}';
-
-    return '$formattedEnum: ${character.name}';
-  }
 }
